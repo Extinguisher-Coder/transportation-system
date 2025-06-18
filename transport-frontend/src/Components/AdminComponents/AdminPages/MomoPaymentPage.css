@@ -1,0 +1,216 @@
+/* Container Styling */
+.momo-container {
+  padding: 20px;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f9fc;
+}
+
+/* Top bar */
+.momo-top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.momo-page-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+  font-size: 40px;
+  color: orangered;
+}
+
+/* Search Input */
+.momo-payment-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.momo-payment-controls input {
+  width: 90%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* Table Styles */
+.momo-table-wrapper {
+  overflow-x: auto;
+}
+
+.momo-students-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.momo-students-table th,
+.momo-students-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 14px;
+}
+
+.momo-students-table th {
+  background-color: #f1f1f1;
+  color: #333;
+  font-weight: 600;
+}
+
+.momo-students-table td {
+  color: #333;
+}
+
+.momo-students-table td[data-label]:before {
+  content: attr(data-label);
+  font-weight: bold;
+  display: none;
+}
+
+/* Payment Button */
+.momo-pay-btn {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.momo-pay-btn:hover {
+  background-color: orangered;
+}
+
+/* Pagination Controls */
+.momo-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.momo-page-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.momo-page-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.momo-page-info {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Loading */
+.momo-loading-bar {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+  margin-top: 30px;
+}
+
+/* ------------------------------- */
+/* Modal Overlay for Payment Form */
+/* ------------------------------- */
+.momo-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.momo-form-content {
+  background-color: #fff;
+  padding: 20px;
+  width: 95%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  animation: fadeInScale 0.3s ease;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ----------------------------- */
+/* Mobile Responsiveness Styles */
+/* ----------------------------- */
+@media (max-width: 768px) {
+  .momo-students-table thead {
+    display: none;
+  }
+
+  .momo-students-table tr {
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .momo-students-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    font-size: 15px;
+    position: relative;
+  }
+
+  .momo-students-table td[data-label]:before {
+    display: block;
+    color: #555;
+    margin-bottom: 4px;
+  }
+
+  .momo-controls input {
+    width: 100%;
+  }
+
+  .momo-page-info {
+    font-size: 13px;
+  }
+
+  .momo-page-btn {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}

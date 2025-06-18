@@ -1,0 +1,22 @@
+.login-footer {
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+  background-color: black;
+  color: #fff;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.login-footer p {
+  margin: 4px 0;
+}
+
+.login-footer a {
+  color: #fbbf24;
+  text-decoration: none;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}

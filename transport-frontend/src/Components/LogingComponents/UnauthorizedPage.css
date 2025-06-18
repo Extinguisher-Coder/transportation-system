@@ -1,0 +1,37 @@
+/* src/Pages/UnauthorizedPage.css */
+.unauthorized-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  text-align: center;
+  padding: 20px;
+}
+
+.unauthorized-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.unauthorized-page p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.unauthorized-page button {
+  background-color: #b91c1c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.unauthorized-page button:hover {
+  background-color: #7f1d1d;
+}

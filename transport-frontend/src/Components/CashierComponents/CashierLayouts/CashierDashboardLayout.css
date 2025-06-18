@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --primary-color: #9ACD32;   /* YellowGreen */
+  --secondary-color: #FA2A02; /* Orangered */
+  --white: #ffffff;
+  --black: #000000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* Grid Container */
+.cashier-grid-container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 60px 1fr;
+  grid-template-areas:
+    "sidebar top-navbar"
+    "sidebar main-content";
+  height: 100vh;
+  width: 100%;
+}
+
+/* Sidebar */
+.cashier-sidebar {
+  grid-area: sidebar;
+  background-color: var(--white);
+  color: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  border-right: 1px solid #ddd;
+  height: 100vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.cashier-sidebar-logo {
+  width: 130px;
+  margin-bottom: 30px;
+}
+
+.cashier-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.cashier-sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--black);
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cashier-sidebar-nav a:hover {
+  background-color: orangered;
+  color: var(--white);
+}
+
+.cashier-sidebar-nav a.active {
+  background-color: #FFD800;
+  color: red;
+}
+
+.nav-img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+/* Top Navbar */
+.cashier-top-navbar {
+  grid-area: top-navbar;
+  background-color: #FFD800;
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 60px;
+  z-index: 1000;
+  position: relative;
+}
+
+.cashier-navbar-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cashier-navbar-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Main Content */
+.cashier-main-content {
+  grid-area: main-content;
+  padding: 25px;
+  overflow-y: auto;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+/* Toggle and Overlay */
+.cashier-navbar-toggle {
+  display: none;
+}
+
+.cashier-menu-toggle {
+  font-size: 24px;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.cashier-sidebar-overlay {
+  display: none;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .cashier-grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas:
+      "top-navbar"
+      "main-content";
+    overflow-x: hidden;
+  }
+
+  .cashier-sidebar {
+    position: fixed;
+    top: 60px;
+    left: -100%;
+    width: 250px;
+    height: calc(100% - 60px);
+    background-color: var(--white);
+    z-index: 1200;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    text-align: center;
+  }
+
+  .cashier-sidebar.open {
+    left: 0;
+  }
+
+  .cashier-top-navbar {
+    justify-content: center;
+    padding: 0 15px;
+    gap: 10px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .cashier-navbar-toggle {
+    display: block;
+    font-size: 22px;
+    color: var(--white);
+    margin-right: auto;
+  }
+
+  .cashier-navbar-title {
+    position: static;
+    transform: none;
+    font-size: 18px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .cashier-navbar-profile {
+    display: none;
+  }
+
+  .cashier-main-content {
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cashier-sidebar-nav {
+    padding: 0 10px;
+    align-items: center;
+  }
+
+  .cashier-sidebar-nav a {
+    justify-content: center;
+  }
+
+  .cashier-sidebar-logo {
+    width: 100px;
+    margin-bottom: 20px;
+  }
+
+  .cashier-sidebar-overlay {
+    display: block;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px);
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1100;
+  }
+}

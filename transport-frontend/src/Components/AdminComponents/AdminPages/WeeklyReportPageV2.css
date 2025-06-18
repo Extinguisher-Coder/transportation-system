@@ -1,0 +1,239 @@
+/* Base Styles */
+.wk-print-wrapper {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9f9fc;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.wk-report-container {
+  max-width: 1200px;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 2rem;
+  overflow-x: auto;
+}
+
+.wk-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: green;
+}
+
+/* Controls */
+.wk-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.wk-term-dropdown,
+.wk-class-dropdown,
+.wk-search {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  min-width: 180px;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 240px;
+}
+
+.wk-search:focus,
+.wk-term-dropdown:focus,
+.wk-class-dropdown:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.wk-loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Table */
+.wk-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.wk-table thead {
+  background-color: #f0f2f5;
+}
+
+.wk-table th,
+.wk-table td {
+  border: 1px solid #ddd;
+  padding: 0.6rem 0.4rem;
+  text-align: center;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.wk-table th {
+  color: black;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #f8f8f8;
+}
+
+.wk-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Color-coded cells */
+.wk-red-cell {
+  background-color: #ffdddd;
+  color: red;
+  font-weight: bold;
+}
+
+.wk-green-cell {
+  background-color: green;
+  color: white;
+  font-weight: bold;
+}
+
+.wk-yellow-cell {
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+}
+
+.wk-blue-cell {
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+}
+
+.wk-brown-cell {
+  background-color: brown;
+  color: white;
+  font-weight: bold;
+}
+
+/* Footer */
+.wk-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Pagination */
+.wk-pagination {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.wk-pagination button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.wk-pagination button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Buttons */
+.wk-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.wk-buttons button {
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.wk-buttons button:hover {
+  background-color: #007bff;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .wk-title {
+    font-size: 1.6rem;
+  }
+
+  .wk-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .wk-term-dropdown,
+  .wk-class-dropdown,
+  .wk-search {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .wk-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wk-pagination {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .wk-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .wk-table th,
+  .wk-table td {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wk-title {
+    font-size: 1.4rem;
+  }
+
+  .wk-buttons button,
+  .wk-pagination button {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .wk-table th,
+  .wk-table td {
+    font-size: 0.75rem;
+  }
+}

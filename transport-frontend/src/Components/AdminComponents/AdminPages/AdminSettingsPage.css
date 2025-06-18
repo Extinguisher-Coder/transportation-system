@@ -1,0 +1,169 @@
+/* AdminSettingsPage.css */
+
+.settings-page-container {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.page-title {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: blue;
+  text-align: center;
+}
+
+.top-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  row-gap: 1rem;
+}
+
+.add-term-btn,
+.upload-students-btn {
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-term-btn:hover,
+.upload-students-btn:hover {
+  background-color: orangered;
+  transform: scale(1.02);
+}
+
+.upload-students-btn input[type="file"] {
+  display: none;
+}
+
+.search-input {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  flex-grow: 1;
+  max-width: 300px;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+.terms-list {
+  overflow-x: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.terms-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.terms-table th,
+.terms-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.terms-table th {
+  background-color: #f0f4f7;
+  font-weight: 600;
+  color: #222;
+}
+
+.terms-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 0.4rem 0.8rem;
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #218838;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .top-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: none;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    margin-bottom: 0.4rem;
+  }
+
+  .terms-table th,
+  .terms-table td {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.6rem;
+  }
+
+  .add-term-btn,
+  .upload-students-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .search-input {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    width: 100%;
+    margin: 0.3rem 0;
+  }
+}

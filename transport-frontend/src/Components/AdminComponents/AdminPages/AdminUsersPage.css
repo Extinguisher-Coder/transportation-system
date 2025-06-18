@@ -1,0 +1,118 @@
+/* AdminUsersPage.css */
+
+.userpage-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.userpage-title {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: blue;
+}
+
+.userpage-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.userpage-buttons button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.userpage-buttons button:hover {
+  background-color: #004d99;
+}
+
+.userpage-table-container {
+  overflow-x: auto;
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.userpage-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.userpage-table th,
+.userpage-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+.userpage-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.userpage-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.userpage-table button {
+  padding: 0.4rem 0.75rem;
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.userpage-table button:hover {
+  opacity: 0.9;
+}
+
+.userpage-reset-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.userpage-delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .userpage-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .userpage-buttons button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .userpage-table th,
+  .userpage-table td {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .userpage-table-container {
+    padding: 0.5rem;
+  }
+}
