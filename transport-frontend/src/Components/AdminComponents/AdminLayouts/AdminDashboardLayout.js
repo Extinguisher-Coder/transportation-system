@@ -17,6 +17,7 @@ import SummaryIcon from "../../Assets/icons/summary.png";
 import BalanceIcon from "../../Assets/icons/balance.png";
 import MomoIcon from "../../Assets/icons/momo.png";
 import LocationIcon from "../../Assets/icons/location.png";
+import FeedIcon from "../../Assets/icons/feed.png";
 
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -70,6 +71,27 @@ const AdminDashboardLayout = () => {
             <img src={DashboardIcon} alt="Dashboard" className="nav-img" />{" "}
             Dashboard
           </NavLink>
+
+                       <a
+  href="https://westsidefeeding.vercel.app"
+  onClick={(e) => {
+    e.preventDefault(); // Stop default navigation
+    logout(); // Clear token and other data
+
+    setTimeout(() => {
+      window.location.href = "https://westsidefeeding.vercel.app"; // Redirect after logout
+    }, 100); // Short delay to allow logout to complete
+  }}
+  className="nav-link"
+>
+  <img src={FeedIcon} alt="FeedIcon" className="nav-imgfeed" />  Feeding System
+</a>
+
+
+
+
+
+
           <NavLink
             to="/admin/locations"
             className={({ isActive }) => (isActive ? "active" : "")}

@@ -9,6 +9,7 @@ import PaymentsIcon from "../../Assets/icons/payments.png";
 import ReportsIcon from "../../Assets/icons/reports.png";
 import LogoutIcon from "../../Assets/icons/logout.png";
 import ChangePassword from '../../Assets/icons/change-password.png';
+import FeedIcon from '../../Assets/icons/feed.png';
 
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -53,6 +54,26 @@ const CashierDashboardLayout = () => {
           <NavLink to="/cashier/dashboard" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeSidebar}>
             <img src={DashboardIcon} alt="Dashboard" className="nav-img" /> Dashboard
           </NavLink>
+
+
+                <a
+                                   href="https://westsidefeeding.vercel.app"
+                                   onClick={(e) => {
+                                     e.preventDefault(); // Stop default navigation
+                                     logout(); // Clear token and other data
+               
+                                     setTimeout(() => {
+                                       window.location.href = "https://westsidefeeding.vercel.app"; // Redirect after logout
+                                     }, 100); // Short delay to allow logout to complete
+                                   }}
+                                   className="nav-link"
+                                 >
+                                   <img src={FeedIcon} alt="FeedIcon" className="nav-imgfeed" />  Feeding System
+                                 </a>
+               
+
+
+                 
 
           <NavLink to="/cashier/payments" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeSidebar}>
             <img src={PaymentsIcon} alt="Payments" className="nav-img" /> Cash Payments

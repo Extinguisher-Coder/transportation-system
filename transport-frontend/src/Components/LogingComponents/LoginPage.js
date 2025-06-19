@@ -12,9 +12,11 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
 
     try {
       const response = await axios.post(`${API_BASE_URL}/users/login`, {
@@ -32,10 +34,13 @@ const LoginPage = () => {
       if (user.role === "Admin") navigate("/admin");
       else if (user.role === "Accountant") navigate("/accountant");
       else if (user.role === "Cashier") navigate("/cashier");
-       else if (user.role === "Registrar") navigate("/registrar");
+      else if (user.role === "Registrar") navigate("/registrar");
       else navigate("/unauthorized");
+
     } catch (err) {
       setErrorMsg(err.response?.data?.message || "Login failed. Please try again.");
+    } finally {
+      setLoading(false); // Stop loading after response
     }
   };
 
@@ -43,15 +48,11 @@ const LoginPage = () => {
     <div className="login-page">
       <div className="overlay"></div>
       <div className="login-box">
-        {/* Logo */}
         <div className="logo-container">
           <img src={logo} alt="School Logo" className="logo-image" />
         </div>
 
-        {/* Title */}
         <h1 className="system-title">Transport Fees Management System</h1>
-
-        {/* Subtitle */}
         <h2>Welcome Back</h2>
 
         <form onSubmit={handleSubmit}>
@@ -75,23 +76,23 @@ const LoginPage = () => {
             required
           />
 
-          {/* Error Message */}
           {errorMsg && <p className="error-msg">{errorMsg}</p>}
 
-          <button type="submit">Login</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
+          </button>
 
           <p className="forgot">
-  <a
-    href="#"
-    onClick={(e) => {
-      e.preventDefault();
-      alert("Please contact the Admin to reset your password.");
-    }}
-  >
-    Forgot password?
-  </a>
-</p>
-
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                alert("Please contact the Admin to reset your password.");
+              }}
+            >
+              Forgot password?
+            </a>
+          </p>
         </form>
       </div>
     </div>
