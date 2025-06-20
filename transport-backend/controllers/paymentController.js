@@ -81,7 +81,7 @@ const timeStr = dateObj.toLocaleTimeString('en-US', {
   hour12: true
 });
 
-const messageText = `Dear Parent,\nTransport fee payment of GHS ${lastAmountPaid} for ${student.first_name} ${student.last_name} (${student.class}) is received on ${dateStr} at ${timeStr}. Please ensure this is the exact amount you paid. For any concerns, call: 0242382484. Thank you.`;
+const messageText = `Dear Parent,\nTransport fee payment of GHS ${lastAmountPaid} for ${student.first_name} ${student.last_name} (${student.class}) is received on ${dateStr} at ${timeStr}. For any concerns, call: 0242382484. Thank you.`;
 
 
     await axios.post(

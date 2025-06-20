@@ -21,6 +21,7 @@ const AdminStudentsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedClass, setSelectedClass] = useState('All Classes');
   const [selectedLocation, setSelectedLocation] = useState('All Locations');
+  const [selectedDirection, setSelectedDirection] = useState('All Directions');
   const [locations, setLocations] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [showAddForm, setShowAddForm] = useState(false);
@@ -82,12 +83,14 @@ const AdminStudentsPage = () => {
     setEditStudent(null);
   };
 
-  const filteredStudents = students.filter(student => {
-    const nameMatch = `${student.first_name} ${student.last_name}`.toLowerCase().includes(searchTerm.toLowerCase());
-    const classMatch = selectedClass === 'All Classes' || student.class === selectedClass;
-    const locationMatch = selectedLocation === 'All Locations' || student.location_name === selectedLocation;
-    return nameMatch && classMatch && locationMatch;
-  });
+        const filteredStudents = students.filter(student => {
+  const nameMatch = `${student.first_name} ${student.last_name}`.toLowerCase().includes(searchTerm.toLowerCase());
+  const classMatch = selectedClass === 'All Classes' || student.class === selectedClass;
+  const locationMatch = selectedLocation === 'All Locations' || student.location_name === selectedLocation;
+  const directionMatch = selectedDirection === 'All Directions' || student.direction === selectedDirection;
+  return nameMatch && classMatch && locationMatch && directionMatch;
+});
+
 
   const indexOfLastStudent = currentPage * studentsPerPage;
   const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
@@ -102,29 +105,30 @@ const AdminStudentsPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
-  const handlePrint = () => {
-    printTableWithHeader({
-      title: "Student List",
-      columns: [
-        { key: "sn", label: "SN" },
-        { key: "student_id", label: "Student ID" },
-        { key: "name", label: "Name" },
-        { key: "class", label: "Class" },
-        { key: "location_name", label: "Location" },
-        { key: "direction", label: "Direction" },
-        { key: "weekly_fee", label: "Weekly Fee" },
-      ],
-      rows: currentStudents.map((student, index) => ({
-        sn: indexOfFirstStudent + index + 1,
-        student_id: student.student_id,
-        name: `${student.first_name} ${student.last_name}`,
-        class: student.class,
-        location_name: student.location_name,
-        direction: student.direction,
-        weekly_fee: student.weekly_fee ?? 'N/A',
-      })),
-    });
-  };
+ const handlePrint = () => {
+  printTableWithHeader({
+    title: "Student List",
+    columns: [
+      { key: "sn", label: "SN" },
+      { key: "student_id", label: "Student ID" },
+      { key: "name", label: "Name" },
+      { key: "class", label: "Class" },
+      { key: "location_name", label: "Location" },
+      { key: "direction", label: "Direction" },
+      { key: "weekly_fee", label: "Weekly Fee" },
+    ],
+    rows: filteredStudents.map((student, index) => ({
+      sn: index + 1,
+      student_id: student.student_id,
+      name: `${student.first_name} ${student.last_name}`,
+      class: student.class,
+      location_name: student.location_name,
+      direction: student.direction,
+      weekly_fee: student.weekly_fee ?? 'N/A',
+    })),
+  });
+};
+
 
   const handleExportExcel = () => {
     const dataForExcel = filteredStudents.map((student, index) => ({
@@ -167,6 +171,12 @@ const AdminStudentsPage = () => {
             <option key={loc} value={loc}>{loc}</option>
           ))}
         </select>
+             <select value={selectedDirection} onChange={(e) => setSelectedDirection(e.target.value)}>
+                <option value="All Directions">All Directions</option>
+                <option value="in">In</option>
+                <option value="out">Out</option>
+                <option value="in_out">In & Out</option>
+              </select>
 
         <input
           type="text"

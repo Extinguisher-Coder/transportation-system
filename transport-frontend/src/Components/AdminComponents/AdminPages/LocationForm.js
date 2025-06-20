@@ -66,13 +66,15 @@ const LocationForm = ({ initialData = null, onCancel, onSuccess }) => {
 
           <label>
             Location Name:
-            <input
-              type="text"
-              name="location_name"
-              value={formData.location_name}
-              onChange={handleChange}
-              required
-            />
+                  <input
+                          type="text"
+                          name="location_name"
+                          value={formData.location_name}
+                          onChange={handleChange}
+                          required
+                          disabled={!!initialData}
+                        />
+
           </label>
 
           <label>
