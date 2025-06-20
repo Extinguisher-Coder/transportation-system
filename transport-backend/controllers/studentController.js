@@ -2,6 +2,7 @@ const Student = require("../models/studentModel");
 const Counter = require("../models/counterModel");
 const Payment = require("../models/paymentModel");
 const Term = require("../models/termModel");
+const Location = require("../models/locationModel"); 
 
 // @desc    Create a new student with auto-incremented ID and payment record
 // @route   POST /students
@@ -100,6 +101,31 @@ exports.getStudentById = async (req, res) => {
 
 exports.updateStudent = async (req, res) => {
   try {
+    const { location_name, direction } = req.body;
+
+    // 🔄 Recalculate weekly_fee if location or direction is provided
+    if (location_name && direction) {
+      const location = await Location.findOne({ location_name });
+      if (!location) {
+        return res.status(400).json({ message: "Invalid location name" });
+      }
+
+      switch (direction) {
+        case "in":
+          req.body.weekly_fee = location.price_in;
+          break;
+        case "out":
+          req.body.weekly_fee = location.price_out;
+          break;
+        case "in_out":
+          req.body.weekly_fee = location.price_in_out;
+          break;
+        default:
+          req.body.weekly_fee = 0;
+      }
+    }
+
+    // 📌 Now apply the update
     const updatedStudent = await Student.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
@@ -109,7 +135,7 @@ exports.updateStudent = async (req, res) => {
       return res.status(404).json({ message: "Student not found" });
     }
 
-    // 🔄 Sync relevant fields in the Payment collection
+    // 🔁 Update payment record with new values
     await Payment.findOneAndUpdate(
       { student_id: updatedStudent.student_id },
       {
@@ -128,6 +154,7 @@ exports.updateStudent = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+
 
 
 // @desc    Delete student
