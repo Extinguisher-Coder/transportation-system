@@ -1,5 +1,10 @@
+
+import React, { useEffect } from "react";
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { checkTokenExpiration } from "./utils/checkToken";
+
+
 import AdminDashboardLayout from './Components/AdminComponents/AdminLayouts/AdminDashboardLayout';
 import AdminDashboardPage from './Components/AdminComponents/AdminPages/AdminDashboardPage';
 import AdminLocationsPage from './Components/AdminComponents/AdminPages/AdminLocationsPage';
@@ -33,6 +38,13 @@ import CashierTransportWeeklyReportPage from './Components/AdminComponents/Admin
 
 
 function App() {
+
+          
+            useEffect(() => {
+    checkTokenExpiration(); // 🔁 This runs once when the app loads
+  }, []);
+        
+
   return (
     <Router>
        
