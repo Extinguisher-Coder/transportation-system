@@ -24,8 +24,12 @@ import CashierDashboardLayout from './Components/CashierComponents/CashierLayout
 import RegistrarDashboardLayout from './Components/RegistrarComponents/RegistrarLayouts/RegistrarDashboardLayout';
 import UnauthorizedPage from './Components/LogingComponents/UnauthorizedPage';
 import ProtectedRoute from './Auth/ProtectedRoute';
-import CashBalancingPage from './Components/AdminComponents/AdminPages/CashBalancingPage';
 import WeeklySummaryPage from './Components/AdminComponents/AdminPages/WeeklySummaryPage';
+import TransportCashBalancingPage from './Components/AdminComponents/AdminPages/TransportCashBalancingPage';
+import TransportAddCashReceivedForm from './Components/AdminComponents/AdminPages/TransportAddCashReceivedForm';
+import TransportDailyBalancingPage from './Components/AdminComponents/AdminPages/TransportDailyBalancingPage';
+import SystemLogs from './Components/AdminComponents/AdminPages/SystemLogs';
+import CashierTransportWeeklyReportPage from './Components/AdminComponents/AdminPages/CashierTransportWeeklyReportPage';
 
 
 function App() {
@@ -63,8 +67,12 @@ function App() {
                             <Route path="/admin/unpaid" element={<UnpaidReportPage/>} />
                             <Route path="/admin/absenteeism" element={<AbsenteeismPage/>} />
                             <Route path="/admin/absentees" element={<AbsentListPage/>} />
-                            <Route path="/admin/balancing" element={<CashBalancingPage/>} />
+                            <Route path="/admin/balancing" element={<TransportCashBalancingPage/>} />
                             <Route path="/admin/summary" element={<WeeklySummaryPage/>} />
+                            <Route path="/admin/transport-add-received" element={<TransportAddCashReceivedForm/>} />
+                            <Route path="/admin/transport-daily-balancing" element={<TransportDailyBalancingPage/>} />
+                            <Route path="/admin/logs" element={<SystemLogs/>} />
+                            <Route path="/admin/cashier-weekly" element={<CashierTransportWeeklyReportPage/>} />
 
 
 
@@ -85,7 +93,12 @@ function App() {
                           <Route path="/accountant/today" element={<TodayReportPage/>} />
                           <Route path="/accountant/weekly" element={<WeeklyReportPageV2/>} />
                           <Route path="/accountant/unpaid" element={<UnpaidReportPage/>} />
-                          <Route path="/accountant/balancing" element={<CashBalancingPage/>} />
+                          <Route path="/accountant/balancing" element={<TransportCashBalancingPage/>} />
+                           <Route path="/accountant/transport-add-received" element={<TransportAddCashReceivedForm/>} />
+                            <Route path="/accountant/transport-daily-balancing" element={<TransportDailyBalancingPage/>} />
+                           <Route path="/accountant/transport-add-received" element={<TransportAddCashReceivedForm/>} />
+                            <Route path="/accountant/transport-daily-balancing" element={<TransportDailyBalancingPage/>} />
+                            <Route path="/accountant/cashier-weekly" element={<CashierTransportWeeklyReportPage/>} />
                             <Route path="/accountant/summary" element={<WeeklySummaryPage/>} />
 
 
@@ -106,6 +119,7 @@ function App() {
                                <Route path="/cashier/today" element={<TodayReportPage/>} />
                               <Route path="/cashier/weekly" element={<WeeklyReportPageV2/>} />
                               <Route path="/cashier/unpaid" element={<UnpaidReportPage/>} />
+                              <Route path="/cashier/cashier-weekly" element={<CashierTransportWeeklyReportPage/>} />
 
 
 

@@ -167,7 +167,7 @@ const WeeklyReportPageV2 = () => {
   return (
     <div className="wk-print-wrapper">
       <div className="wk-report-container">
-        <h1 className="wk-title">Weekly Payment Report</h1>
+        <h1 className="wk-title">Weekly Transport Payment Report</h1>
 
         <div className="wk-controls no-print">
           <select

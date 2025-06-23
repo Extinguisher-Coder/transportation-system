@@ -1,0 +1,118 @@
+/* TransportDailyBalancingPage.css */
+
+.transport-daily-page {
+  padding: 30px;
+  background-color: #f5f7fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+.transport-daily-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.transport-daily-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.transport-daily-export-btn {
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.transport-daily-export-btn:hover {
+  background-color: #27ae60;
+}
+
+.transport-daily-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.transport-daily-search-date {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.transport-daily-search-date input[type='text'],
+.transport-daily-search-date input[type='date'],
+.transport-daily-filters select {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: white;
+  min-width: 160px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.transport-daily-search-date input:focus,
+.transport-daily-filters select:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.transport-daily-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.transport-daily-table th,
+.transport-daily-table td {
+  padding: 14px 18px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 15px;
+}
+
+.transport-daily-table th {
+  background-color: #2c3e50;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.transport-daily-table tbody tr:hover {
+  background-color: #f0f4f8;
+}
+
+.transport-daily-table td {
+  color: #2c3e50;
+}
+
+.transport-daily-table td:nth-child(3) {
+  font-weight: bold;
+  color: #2980b9;
+}
+
+.transport-daily-table td:nth-child(4) {
+  color: #7f8c8d;
+}
+
+.transport-daily-total {
+  margin: 25px 0;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  color: #2c3e50;
+}

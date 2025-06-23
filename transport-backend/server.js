@@ -10,6 +10,17 @@ const userRoutes = require('./routes/userRoutes');
 const reminderRoutes = require("./routes/reminderRoutes");
 const absenteeismRoutes = require('./routes/absenteeismRoutes');
 const timeRoutes = require('./routes/timeRoutes');
+const settingRoutes = require('./routes/settingRoutes');
+const transportReconciliationRoutes = require('./routes/transportReconciliationRoutes');
+const transportBalanceHistoryRoutes = require('./routes/transportBalanceHistoryRoutes');
+const cashierTransportSummaryRoutes = require('./routes/cashierTransportSummaryRoutes');
+
+
+
+
+
+
+
 
 const cors = require('cors');
 require('dotenv').config();
@@ -36,6 +47,10 @@ app.use('/api/users', userRoutes);
 app.use("/api/reminder", reminderRoutes);
 app.use('/api/absenteeism', absenteeismRoutes);
 app.use('/api/time', timeRoutes);
+app.use('/api/settings', settingRoutes);
+app.use('/api/transport-reconciliation', transportReconciliationRoutes);
+app.use('/api/transport-balance-history', transportBalanceHistoryRoutes);
+app.use('/api/cashier-transport-summary', cashierTransportSummaryRoutes);
 
 
 

@@ -120,6 +120,38 @@
   background-color: #c82333;
 }
 
+/* 🔘 Transport Restriction Radio Buttons */
+.restriction-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+  border: 2px dashed yellow;
+  border-radius: 10px;
+  background-color: #f9fff5;
+}
+
+.restriction-options label {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.restriction-options input[type="radio"] {
+  accent-color: blue;
+  width: 1.1rem;
+  height: 1.1rem;
+  cursor: pointer;
+}
+
+
 /* Responsive Enhancements */
 @media (max-width: 768px) {
   .top-controls {

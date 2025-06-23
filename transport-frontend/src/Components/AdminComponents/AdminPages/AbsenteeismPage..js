@@ -92,7 +92,7 @@ const AbsenteeismPage = () => {
         </button>
       </div>
 
-      <h2 className="absentee-page-title">Absenteeism Page</h2>
+      <h2 className="absentee-page-title"> Transport Absenteeism Page</h2>
 
       <div className="absentee-controls">
         <input

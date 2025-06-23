@@ -116,7 +116,7 @@ const AbsentListPage = () => {
 
   return (
     <div className="absentee-container">
-      <h2 className="absentee-page-title">Absent Students List</h2>
+      <h2 className="absentee-page-title"> Transport Absent Students List</h2>
 
       {loading ? (
         <div className="absentee-loading-bar">Loading...</div>

@@ -134,7 +134,7 @@ const TodayReportPage = () => {
     <div className="today-report__page">
       <div className="today-report__container">
         <header className="today-report__header">
-          <h1 className="today-report__title">Today's Payment Report</h1>
+          <h1 className="today-report__title"> Transport: Today's Payment Report</h1>
         </header>
 
         <div className="today-report__buttons">

@@ -143,7 +143,7 @@ const UnpaidReportPage = () => {
     <div className="unpaid-wrapper">
       <div className="unpaid-report-container">
         <header className="report-header">
-          <h1 className="report-title">Unpaid Students Per Week</h1>
+          <h1 className="report-title"> Transport Unpaid Students Per Week</h1>
         </header>
 
         <div className="report-controls no-print">

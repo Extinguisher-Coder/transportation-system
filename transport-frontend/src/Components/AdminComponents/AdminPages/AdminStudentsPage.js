@@ -149,7 +149,7 @@ const AdminStudentsPage = () => {
 
   return (
     <div className="admin-students">
-      <h1 className="title">Admin - Student Management</h1>
+      <h1 className="title"> Transport Student Management</h1>
 
       <div className="controls">
         <button className="btn primary" onClick={() => { setShowAddForm(true); setEditStudent(null); }}>

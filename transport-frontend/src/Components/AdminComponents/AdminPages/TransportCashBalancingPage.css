@@ -1,0 +1,163 @@
+/* TransportCashBalancingPage.css */
+
+.cash-page {
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f9fc;
+  min-height: 100vh;
+}
+
+.pagetitle {
+  font-size: 40px;
+  font-weight: 600;
+  color: blue;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.action-row,
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.primary-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.primary-btn:hover {
+  background-color: #2980b9;
+}
+
+.secondary-btn {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.secondary-btn:hover {
+  background-color: #27ae60;
+}
+
+.filter-row select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.status-line {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.status-line.balanced {
+  background-color: hsl(134, 72%, 78%);
+  color: black;
+  border: 1px solid green;
+}
+
+.status-line.unbalanced {
+  background-color:  hsl(353, 76%, 79%);
+  color: black;
+  border: 1px solid red;
+}
+
+.cash-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.03);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cash-table th,
+.cash-table td {
+  padding: 14px 16px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 16px;
+}
+
+.cash-table th {
+  background-color: #2c3e50;
+  color: white;
+  font-weight: 600;
+}
+
+.cash-table tbody tr:hover {
+  background-color: #f2f2f2;
+}
+
+.grand-total-row {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.status-balanced {
+  background-color: green;
+  color: white;
+}
+
+.status-unbalanced {
+  background-color: red;
+  color: white;
+}
+
+.status-over {
+  background-color: yellow;
+  color: black;
+}
+
+.diff-balanced {
+  color: green;
+}
+
+.diff-unbalanced {
+  color: red;
+}
+
+.diff-over {
+  color: blue;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  gap: 10px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}

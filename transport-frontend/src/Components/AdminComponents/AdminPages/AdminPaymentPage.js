@@ -65,7 +65,7 @@ const AdminPaymentPage = () => {
         <span className="user-name">Cashier: {currentUser?.fullName || 'N/A'}</span>
       </div>
 
-      <h2 className="page-title"> Cash Payment Page</h2>
+      <h2 className="page-title"> Transport Cash Payment Page</h2>
 
       <div className="payment-controls">
         <input

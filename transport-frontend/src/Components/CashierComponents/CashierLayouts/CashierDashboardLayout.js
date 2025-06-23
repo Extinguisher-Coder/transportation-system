@@ -10,6 +10,7 @@ import ReportsIcon from "../../Assets/icons/reports.png";
 import LogoutIcon from "../../Assets/icons/logout.png";
 import ChangePassword from '../../Assets/icons/change-password.png';
 import FeedIcon from '../../Assets/icons/feed.png';
+import CashierIcon from '../../Assets/icons/cashier.png';
 
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -84,6 +85,17 @@ const CashierDashboardLayout = () => {
             <img src={ReportsIcon} alt="Reports" className="nav-img" /> Reports
           </NavLink>
            
+            
+            <NavLink
+            to="/cashier/cashier-weekly"
+            className={({ isActive }) => (isActive ? "active" : "")}
+            onClick={closeSidebar}
+          >
+            <img src={CashierIcon} alt="CashierIcon" className="nav-img" /> Cashier Weekly Balancing
+          </NavLink>
+
+
+
            <NavLink
             to="/cashier/change-password"
             className={({ isActive }) => (isActive ? 'active' : '')}

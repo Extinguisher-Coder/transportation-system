@@ -9,9 +9,11 @@ const AdminSettingsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showAddTermForm, setShowAddTermForm] = useState(false);
   const [editTerm, setEditTerm] = useState(null);
+  const [transportRestriction, setTransportRestriction] = useState('allow');
 
   useEffect(() => {
     fetchTerms();
+    fetchTransportRestriction();
   }, []);
 
   useEffect(() => {
@@ -27,6 +29,24 @@ const AdminSettingsPage = () => {
       setTerms(response.data);
     } catch (error) {
       console.error("Error fetching terms:", error);
+    }
+  };
+
+  const fetchTransportRestriction = async () => {
+    try {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/settings/transportPaymentRestriction`);
+      setTransportRestriction(res.data.value); // ✅ Use .value not full res.data
+    } catch (error) {
+      console.error("Error fetching transport restriction:", error);
+    }
+  };
+
+  const updateTransportRestriction = async (value) => {
+    try {
+      await axios.put(`${process.env.REACT_APP_BACKEND_API_URL}/settings/transportPaymentRestriction`, { value });
+      setTransportRestriction(value);
+    } catch (error) {
+      console.error("Failed to update transport restriction:", error);
     }
   };
 
@@ -103,7 +123,31 @@ const AdminSettingsPage = () => {
 
   return (
     <div className="settings-page-container">
-      <h1 className="page-title">Settings - Manage Terms</h1>
+      <h1 className="page-title">Transport Setting - Manage Terms</h1>
+
+      {/* 🚌 Transport Restriction */}
+      <div className="restriction-options">
+        <label>
+          <input
+            type="radio"
+            name="transportRestriction"
+            value="restrict"
+            checked={transportRestriction === 'restrict'}
+            onChange={() => updateTransportRestriction('restrict')}
+          />
+          Restrict Partial Payment for Transport
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="transportRestriction"
+            value="allow"
+            checked={transportRestriction === 'allow'}
+            onChange={() => updateTransportRestriction('allow')}
+          />
+          Allow Partial Payment for Transport
+        </label>
+      </div>
 
       <div className="top-controls">
         <button className="add-term-btn" onClick={handleAddTermClick}>Add New Term</button>
@@ -137,7 +181,7 @@ const AdminSettingsPage = () => {
               <th>Term Name</th>
               <th>Start Date</th>
               <th>End Date</th>
-              <th> Number of Weeks</th>
+              <th>Number of Weeks</th>
               <th>Actions</th>
             </tr>
           </thead>

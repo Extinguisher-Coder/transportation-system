@@ -145,7 +145,7 @@ const AdminReportPage = () => {
     <div className="admin-reports__page">
       <div className="admin-reports__container">
         <header className="admin-reports__header">
-          <h1 className="admin-reports__title">Payment Report</h1>
+          <h1 className="admin-reports__title"> Transport Payment Report</h1>
         </header>
 
         <div className="admin-reports__buttons">

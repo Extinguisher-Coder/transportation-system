@@ -65,7 +65,7 @@ const MomoPaymentPage = () => {
         <span className="momo-user-name">Cashier: {currentUser?.fullName || 'N/A'}</span>
       </div>
 
-      <h2 className="momo-page-title">MoMo Payment Page</h2>
+      <h2 className="momo-page-title"> Transport MoMo Payment Page</h2>
 
       <div className="momo-payment-controls">
         <input
