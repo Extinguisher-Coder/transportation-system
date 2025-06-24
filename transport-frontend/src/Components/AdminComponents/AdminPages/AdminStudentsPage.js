@@ -35,6 +35,10 @@ const AdminStudentsPage = () => {
     fetchLocations();
   }, []);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedClass, selectedLocation, selectedDirection]);
+
   const fetchStudents = async () => {
     try {
       setLoading(true);
@@ -83,14 +87,21 @@ const AdminStudentsPage = () => {
     setEditStudent(null);
   };
 
-        const filteredStudents = students.filter(student => {
-  const nameMatch = `${student.first_name} ${student.last_name}`.toLowerCase().includes(searchTerm.toLowerCase());
-  const classMatch = selectedClass === 'All Classes' || student.class === selectedClass;
-  const locationMatch = selectedLocation === 'All Locations' || student.location_name === selectedLocation;
-  const directionMatch = selectedDirection === 'All Directions' || student.direction === selectedDirection;
-  return nameMatch && classMatch && locationMatch && directionMatch;
-});
+  const filteredStudents = students.filter(student => {
+    const searchText = searchTerm.toLowerCase();
+    const matchesSearch =
+      student.student_id?.toLowerCase().includes(searchText) ||
+      student.first_name?.toLowerCase().includes(searchText) ||
+      student.last_name?.toLowerCase().includes(searchText) ||
+      `${student.first_name} ${student.last_name}`.toLowerCase().includes(searchText) ||
+      student.class?.toLowerCase().includes(searchText);
 
+    const classMatch = selectedClass === 'All Classes' || student.class === selectedClass;
+    const locationMatch = selectedLocation === 'All Locations' || student.location_name === selectedLocation;
+    const directionMatch = selectedDirection === 'All Directions' || student.direction === selectedDirection;
+
+    return matchesSearch && classMatch && locationMatch && directionMatch;
+  });
 
   const indexOfLastStudent = currentPage * studentsPerPage;
   const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
@@ -105,30 +116,29 @@ const AdminStudentsPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
- const handlePrint = () => {
-  printTableWithHeader({
-    title: "Student List",
-    columns: [
-      { key: "sn", label: "SN" },
-      { key: "student_id", label: "Student ID" },
-      { key: "name", label: "Name" },
-      { key: "class", label: "Class" },
-      { key: "location_name", label: "Location" },
-      { key: "direction", label: "Direction" },
-      { key: "weekly_fee", label: "Weekly Fee" },
-    ],
-    rows: filteredStudents.map((student, index) => ({
-      sn: index + 1,
-      student_id: student.student_id,
-      name: `${student.first_name} ${student.last_name}`,
-      class: student.class,
-      location_name: student.location_name,
-      direction: student.direction,
-      weekly_fee: student.weekly_fee ?? 'N/A',
-    })),
-  });
-};
-
+  const handlePrint = () => {
+    printTableWithHeader({
+      title: "Student List",
+      columns: [
+        { key: "sn", label: "SN" },
+        { key: "student_id", label: "Student ID" },
+        { key: "name", label: "Name" },
+        { key: "class", label: "Class" },
+        { key: "location_name", label: "Location" },
+        { key: "direction", label: "Direction" },
+        { key: "weekly_fee", label: "Weekly Fee" },
+      ],
+      rows: filteredStudents.map((student, index) => ({
+        sn: index + 1,
+        student_id: student.student_id,
+        name: `${student.first_name} ${student.last_name}`,
+        class: student.class,
+        location_name: student.location_name,
+        direction: student.direction,
+        weekly_fee: student.weekly_fee ?? 'N/A',
+      })),
+    });
+  };
 
   const handleExportExcel = () => {
     const dataForExcel = filteredStudents.map((student, index) => ({
@@ -149,7 +159,7 @@ const AdminStudentsPage = () => {
 
   return (
     <div className="admin-students">
-      <h1 className="title"> Transport Student Management</h1>
+      <h1 className="title">Transport Student Management</h1>
 
       <div className="controls">
         <button className="btn primary" onClick={() => { setShowAddForm(true); setEditStudent(null); }}>
@@ -171,16 +181,17 @@ const AdminStudentsPage = () => {
             <option key={loc} value={loc}>{loc}</option>
           ))}
         </select>
-             <select value={selectedDirection} onChange={(e) => setSelectedDirection(e.target.value)}>
-                <option value="All Directions">All Directions</option>
-                <option value="in">In</option>
-                <option value="out">Out</option>
-                <option value="in_out">In & Out</option>
-              </select>
+
+        <select value={selectedDirection} onChange={(e) => setSelectedDirection(e.target.value)}>
+          <option value="All Directions">All Directions</option>
+          <option value="in">In</option>
+          <option value="out">Out</option>
+          <option value="in_out">In & Out</option>
+        </select>
 
         <input
           type="text"
-          placeholder="Search by name..."
+          placeholder="Search by name, ID, class..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

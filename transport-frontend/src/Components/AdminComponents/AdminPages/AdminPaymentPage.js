@@ -24,9 +24,15 @@ const AdminPaymentPage = () => {
   }, []);
 
   useEffect(() => {
+    const searchText = searchTerm.toLowerCase();
     const filtered = students.filter((s) =>
-      s.student_id?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      `${s.first_name} ${s.last_name}`.toLowerCase().includes(searchTerm.toLowerCase())
+      s.student_id?.toLowerCase().includes(searchText) ||
+      s.first_name?.toLowerCase().includes(searchText) ||
+      s.last_name?.toLowerCase().includes(searchText) ||
+      `${s.first_name} ${s.last_name}`.toLowerCase().includes(searchText) ||
+      s.class?.toLowerCase().includes(searchText) ||
+      s.location_name?.toLowerCase().includes(searchText) ||
+      s.direction?.toLowerCase().includes(searchText)
     );
     setFilteredStudents(filtered);
     setCurrentPage(1);
@@ -65,12 +71,12 @@ const AdminPaymentPage = () => {
         <span className="user-name">Cashier: {currentUser?.fullName || 'N/A'}</span>
       </div>
 
-      <h2 className="page-title"> Transport Cash Payment Page</h2>
+      <h2 className="page-title">Transport Cash Payment Page</h2>
 
       <div className="payment-controls">
         <input
           type="text"
-          placeholder="Search by name or student ID"
+          placeholder="Search by name, ID, class, location..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

@@ -16,7 +16,7 @@ const AdminReportPage = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 30;
- 
+
   const user = JSON.parse(localStorage.getItem("user")) || {};
 
   const classList = [
@@ -41,15 +41,23 @@ const AdminReportPage = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedCashier, selectedClass, selectedLocation, selectedDate]);
+
   const uniqueCashiers = ['All', ...new Set(data.map(item => item.cashier))];
   const uniqueLocations = ['All', ...new Set(data.map(item => item.location_name).filter(Boolean))];
 
   const filteredData = data.filter(item => {
+    const searchText = searchQuery.toLowerCase();
     const matchesSearch =
-      item.student_id?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.first_name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.last_name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.class?.toLowerCase().includes(searchQuery.toLowerCase());
+      item.student_id?.toLowerCase().includes(searchText) ||
+      item.first_name?.toLowerCase().includes(searchText) ||
+      item.last_name?.toLowerCase().includes(searchText) ||
+      `${item.first_name} ${item.last_name}`.toLowerCase().includes(searchText) ||
+      item.class?.toLowerCase().includes(searchText) ||
+      item.location_name?.toLowerCase().includes(searchText) ||
+      item.direction?.toLowerCase().includes(searchText);
 
     const matchesCashier = selectedCashier === 'All' || item.cashier === selectedCashier;
     const matchesClass = selectedClass === 'All' || item.class === selectedClass;
@@ -76,7 +84,7 @@ const AdminReportPage = () => {
       Location: item.location_name || '',
       Direction: item.direction || '',
       "Amount Paid": item.amountPaid,
-      "Payment Date": new Date(item.paymentDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+      "Payment Date": new Date(item.paymentDate).toLocaleDateString('en-US'),
       Cashier: item.cashier,
       Reference: item.reference,
     }));
@@ -113,75 +121,24 @@ const AdminReportPage = () => {
         location: item.location_name || '',
         direction: item.direction || '',
         amountPaid: `GHS ${item.amountPaid}`,
-        paymentDate: new Date(item.paymentDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+        paymentDate: new Date(item.paymentDate).toLocaleDateString('en-US'),
         cashier: item.cashier,
         reference: item.reference,
       })),
     });
   };
 
-  const filterThisWeek = () => {
-    const today = new Date();
-    const weekAgo = new Date(today);
-    weekAgo.setDate(today.getDate() - 7);
-    setData(prev => prev.filter(item => {
-      const paymentDate = new Date(item.paymentDate);
-      return paymentDate >= weekAgo && paymentDate <= today;
-    }));
-  };
-
-  const showUnpaid = async () => {
-    setLoading(true);
-    try {
-      const res = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/students/unpaid`);
-      setData(res.data);
-    } catch (err) {
-      console.error("Failed to fetch unpaid students", err);
-    }
-    setLoading(false);
-  };
-
   return (
     <div className="admin-reports__page">
       <div className="admin-reports__container">
         <header className="admin-reports__header">
-          <h1 className="admin-reports__title"> Transport Payment Report</h1>
+          <h1 className="admin-reports__title">Transport Payment Report</h1>
         </header>
 
         <div className="admin-reports__buttons">
-          <button
-  onClick={() => {
-    if (user.role === 'Admin') navigate('/admin/today');
-    else if (user.role === 'Cashier') navigate('/cashier/today');
-    else if (user.role === 'Accountant') navigate('/accountant/today');
-  }}
-  className="admin-reports__btn admin-reports__btn--today"
->
-  Today's Report
-</button>
-
-<button
-  onClick={() => {
-    if (user.role === 'Admin') navigate('/admin/weekly');
-    else if (user.role === 'Cashier') navigate('/cashier/weekly');
-    else if (user.role === 'Accountant') navigate('/accountant/weekly');
-  }}
-  className="admin-reports__btn admin-reports__btn--weekly"
->
-  Weekly Report
-</button>
-
-<button
-  onClick={() => {
-    if (user.role === 'Admin') navigate('/admin/unpaid');
-    else if (user.role === 'Cashier') navigate('/cashier/unpaid');
-    else if (user.role === 'Accountant') navigate('/accountant/unpaid');
-  }}
-  className="admin-reports__btn admin-reports__btn--unpaid"
->
-  Unpaid Students
-</button>
-
+          <button onClick={() => navigate(`/${user.role.toLowerCase()}/today`)} className="admin-reports__btn admin-reports__btn--today">Today's Report</button>
+          <button onClick={() => navigate(`/${user.role.toLowerCase()}/weekly`)} className="admin-reports__btn admin-reports__btn--weekly">Weekly Report</button>
+          <button onClick={() => navigate(`/${user.role.toLowerCase()}/unpaid`)} className="admin-reports__btn admin-reports__btn--unpaid">Unpaid Students</button>
           <button onClick={handlePrint} className="admin-reports__btn admin-reports__btn--print">Print</button>
           <button onClick={handleExport} className="admin-reports__btn admin-reports__btn--export">Export</button>
         </div>
@@ -189,7 +146,7 @@ const AdminReportPage = () => {
         <div className="admin-reports__filter">
           <input
             type="text"
-            placeholder="Search by ID, Name..."
+            placeholder="Search by name, ID, location..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="admin-reports__search"
@@ -254,7 +211,7 @@ const AdminReportPage = () => {
                     <td>{item.location_name}</td>
                     <td>{item.direction}</td>
                     <td>GHS {item.amountPaid}</td>
-                    <td>{new Date(item.paymentDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</td>
+                    <td>{new Date(item.paymentDate).toLocaleDateString('en-US')}</td>
                     <td>{item.cashier}</td>
                     <td>{item.reference}</td>
                   </tr>
