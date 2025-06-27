@@ -1,0 +1,66 @@
+.summary-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.summary-title {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #0077B6; /* Primary Blue */
+  text-align: center;
+}
+
+.summary-term {
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #023E8A; /* Dark Blue */
+}
+
+.summary-loading {
+  text-align: center;
+  color: #888;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.summary-table th,
+.summary-table td {
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 15px;
+}
+
+.summary-table th {
+  background-color: #0077B6;
+  color: white;
+}
+
+.summary-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.summary-table tr:hover {
+  background-color: #FF7F50; /* Light Coral hover */
+  color: white;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.grand-total-row td {
+  background-color: #F2542D; /* Accent Orange */
+  color: white;
+}

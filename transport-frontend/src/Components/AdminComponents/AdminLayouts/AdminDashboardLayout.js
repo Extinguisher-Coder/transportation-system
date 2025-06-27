@@ -73,24 +73,20 @@ const AdminDashboardLayout = () => {
             Dashboard
           </NavLink>
 
-                       <a
-  href="https://westsidefeeding.vercel.app"
-  onClick={(e) => {
-    e.preventDefault(); // Stop default navigation
-    logout(); // Clear token and other data
+                      <a
+                      href="https://westsidefeeding.vercel.app"
+                      onClick={(e) => {
+                        e.preventDefault();       // Stop default navigation
+                        logout(false);            // Don't redirect to "/"
 
-    setTimeout(() => {
-      window.location.href = "https://westsidefeeding.vercel.app"; // Redirect after logout
-    }, 100); // Short delay to allow logout to complete
-  }}
-  className="nav-link"
->
-  <img src={FeedIcon} alt="FeedIcon" className="nav-imgfeed" />  Feeding System
-</a>
-
-
-
-
+                        setTimeout(() => {
+                          window.location.href = "https://westsidefeeding.vercel.app"; // Now this will run
+                        }, 100);
+                      }}
+                      className="nav-link"
+                    >
+                      <img src={FeedIcon} alt="FeedIcon" className="nav-imgfeed" /> Feeding System
+                    </a>
 
 
           <NavLink

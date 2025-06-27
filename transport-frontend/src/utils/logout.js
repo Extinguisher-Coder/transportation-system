@@ -1,11 +1,8 @@
-export const logout = () => {
-  // Remove token and user info from localStorage
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
+export const logout = (redirect = true) => {
+  localStorage.clear();
+  sessionStorage.clear();
 
-  // Optional: Clear other sensitive localStorage/sessionStorage items
-  // sessionStorage.clear(); // Uncomment if you're using sessionStorage
-
-  // Redirect to login page
-  window.location.href = "/";
+  if (redirect) {
+    window.location.replace("/");
+  }
 };

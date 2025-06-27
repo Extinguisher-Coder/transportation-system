@@ -45,15 +45,14 @@ const TodayReportPage = () => {
   }, []);
 
   const uniqueCashiers = ['All', ...new Set(data.map(item => item.cashier))];
- const uniqueLocations = [
-  'All',
-  ...new Set(
-    data
-      .map(item => item.location_name?.trim())
-      .filter(loc => !!loc)
-  )
-];
-
+  const uniqueLocations = [
+    'All',
+    ...new Set(
+      data
+        .map(item => item.location_name?.trim())
+        .filter(loc => !!loc)
+    )
+  ];
 
   const filteredData = data.filter(item => {
     const matchesSearch =
@@ -76,6 +75,17 @@ const TodayReportPage = () => {
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+  };
+
   const handleExport = () => {
     const exportData = filteredData.map((item, index) => ({
       SN: index + 1,
@@ -86,7 +96,7 @@ const TodayReportPage = () => {
       Location: item.location_name || '',
       Direction: item.direction || '',
       "Amount Paid": item.amountPaid,
-      "Payment Date": new Date(item.paymentDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+      "Payment Date": formatDate(item.paymentDate),
       Cashier: item.cashier,
       Reference: item.reference,
     }));
@@ -123,7 +133,7 @@ const TodayReportPage = () => {
         location: item.location_name || '',
         direction: item.direction || '',
         amountPaid: `GHS ${item.amountPaid}`,
-        paymentDate: new Date(item.paymentDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+        paymentDate: formatDate(item.paymentDate),
         cashier: item.cashier,
         reference: item.reference,
       })),
@@ -204,7 +214,7 @@ const TodayReportPage = () => {
                     <td>{item.location_name}</td>
                     <td>{item.direction}</td>
                     <td>GHS {item.amountPaid}</td>
-                    <td>{new Date(item.paymentDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</td>
+                    <td>{formatDate(item.paymentDate)}</td>
                     <td>{item.cashier}</td>
                     <td>{item.reference}</td>
                   </tr>

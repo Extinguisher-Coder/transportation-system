@@ -29,12 +29,12 @@ import CashierDashboardLayout from './Components/CashierComponents/CashierLayout
 import RegistrarDashboardLayout from './Components/RegistrarComponents/RegistrarLayouts/RegistrarDashboardLayout';
 import UnauthorizedPage from './Components/LogingComponents/UnauthorizedPage';
 import ProtectedRoute from './Auth/ProtectedRoute';
-import WeeklySummaryPage from './Components/AdminComponents/AdminPages/WeeklySummaryPage';
 import TransportCashBalancingPage from './Components/AdminComponents/AdminPages/TransportCashBalancingPage';
 import TransportAddCashReceivedForm from './Components/AdminComponents/AdminPages/TransportAddCashReceivedForm';
 import TransportDailyBalancingPage from './Components/AdminComponents/AdminPages/TransportDailyBalancingPage';
 import SystemLogs from './Components/AdminComponents/AdminPages/SystemLogs';
 import CashierTransportWeeklyReportPage from './Components/AdminComponents/AdminPages/CashierTransportWeeklyReportPage';
+import TransportSummaryPage from "./Components/AdminComponents/AdminPages/TransportSummaryPage";
 
 
 function App() {
@@ -80,7 +80,7 @@ function App() {
                             <Route path="/admin/absenteeism" element={<AbsenteeismPage/>} />
                             <Route path="/admin/absentees" element={<AbsentListPage/>} />
                             <Route path="/admin/balancing" element={<TransportCashBalancingPage/>} />
-                            <Route path="/admin/summary" element={<WeeklySummaryPage/>} />
+                            <Route path="/admin/summary" element={<TransportSummaryPage/>} />
                             <Route path="/admin/transport-add-received" element={<TransportAddCashReceivedForm/>} />
                             <Route path="/admin/transport-daily-balancing" element={<TransportDailyBalancingPage/>} />
                             <Route path="/admin/logs" element={<SystemLogs/>} />
@@ -111,7 +111,7 @@ function App() {
                            <Route path="/accountant/transport-add-received" element={<TransportAddCashReceivedForm/>} />
                             <Route path="/accountant/transport-daily-balancing" element={<TransportDailyBalancingPage/>} />
                             <Route path="/accountant/cashier-weekly" element={<CashierTransportWeeklyReportPage/>} />
-                            <Route path="/accountant/summary" element={<WeeklySummaryPage/>} />
+                            <Route path="/accountant/summary" element={<TransportSummaryPage/>} />
 
 
 

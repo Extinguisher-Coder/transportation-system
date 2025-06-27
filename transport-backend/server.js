@@ -14,6 +14,7 @@ const settingRoutes = require('./routes/settingRoutes');
 const transportReconciliationRoutes = require('./routes/transportReconciliationRoutes');
 const transportBalanceHistoryRoutes = require('./routes/transportBalanceHistoryRoutes');
 const cashierTransportSummaryRoutes = require('./routes/cashierTransportSummaryRoutes');
+const transportSummaryRoutes = require('./routes/transportSummaryRoutes');
 
 
 
@@ -51,7 +52,7 @@ app.use('/api/settings', settingRoutes);
 app.use('/api/transport-reconciliation', transportReconciliationRoutes);
 app.use('/api/transport-balance-history', transportBalanceHistoryRoutes);
 app.use('/api/cashier-transport-summary', cashierTransportSummaryRoutes);
-
+app.use('/api/transport', transportSummaryRoutes);
 
 
 

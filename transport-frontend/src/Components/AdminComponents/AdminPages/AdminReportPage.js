@@ -74,6 +74,18 @@ const AdminReportPage = () => {
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
+  const formatDateTime = (dateString) => {
+    const options = {
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    };
+    return new Date(dateString).toLocaleString('en-US', options);
+  };
+
   const handleExport = () => {
     const exportData = filteredData.map((item, index) => ({
       SN: index + 1,
@@ -84,7 +96,7 @@ const AdminReportPage = () => {
       Location: item.location_name || '',
       Direction: item.direction || '',
       "Amount Paid": item.amountPaid,
-      "Payment Date": new Date(item.paymentDate).toLocaleDateString('en-US'),
+      "Payment Date": formatDateTime(item.paymentDate),
       Cashier: item.cashier,
       Reference: item.reference,
     }));
@@ -118,10 +130,10 @@ const AdminReportPage = () => {
         student_id: item.student_id,
         name: `${item.first_name} ${item.last_name}`,
         class: item.class,
-        location: item.location_name || '',
-        direction: item.direction || '',
+        location: item.location_name,
+        direction: item.direction,
         amountPaid: `GHS ${item.amountPaid}`,
-        paymentDate: new Date(item.paymentDate).toLocaleDateString('en-US'),
+        paymentDate: formatDateTime(item.paymentDate),
         cashier: item.cashier,
         reference: item.reference,
       })),
@@ -211,7 +223,7 @@ const AdminReportPage = () => {
                     <td>{item.location_name}</td>
                     <td>{item.direction}</td>
                     <td>GHS {item.amountPaid}</td>
-                    <td>{new Date(item.paymentDate).toLocaleDateString('en-US')}</td>
+                    <td>{formatDateTime(item.paymentDate)}</td>
                     <td>{item.cashier}</td>
                     <td>{item.reference}</td>
                   </tr>
