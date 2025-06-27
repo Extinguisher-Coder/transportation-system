@@ -57,20 +57,21 @@ const CashierDashboardLayout = () => {
           </NavLink>
 
 
-                <a
-                                   href="https://westsidefeeding.vercel.app"
-                                   onClick={(e) => {
-                                     e.preventDefault(); // Stop default navigation
-                                     logout(); // Clear token and other data
-               
-                                     setTimeout(() => {
-                                       window.location.href = "https://westsidefeeding.vercel.app"; // Redirect after logout
-                                     }, 100); // Short delay to allow logout to complete
-                                   }}
-                                   className="nav-link"
-                                 >
-                                   <img src={FeedIcon} alt="FeedIcon" className="nav-imgfeed" />  Feeding System
-                                 </a>
+                             <a
+                        href="https://westsidefeeding.vercel.app"
+                        onClick={(e) => {
+                          e.preventDefault();       // Prevent default navigation
+                          logout(false);            // Clear storage but don't redirect
+
+                          setTimeout(() => {
+                            window.location.replace("https://westsidefeeding.vercel.app"); // Replace history entry
+                          }, 100);
+                        }}
+                        className="nav-link"
+                      >
+                        <img src={FeedIcon} alt="FeedIcon" className="nav-imgfeed" /> Feeding System
+                      </a>
+
                
 
 

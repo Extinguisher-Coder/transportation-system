@@ -73,20 +73,21 @@ const AdminDashboardLayout = () => {
             Dashboard
           </NavLink>
 
-                      <a
+                                          <a
                       href="https://westsidefeeding.vercel.app"
                       onClick={(e) => {
-                        e.preventDefault();       // Stop default navigation
-                        logout(false);            // Don't redirect to "/"
+                        e.preventDefault();       // Prevent default navigation
+                        logout(false);            // Clear storage but don't redirect
 
                         setTimeout(() => {
-                          window.location.href = "https://westsidefeeding.vercel.app"; // Now this will run
+                          window.location.replace("https://westsidefeeding.vercel.app"); // Replace history entry
                         }, 100);
                       }}
                       className="nav-link"
                     >
                       <img src={FeedIcon} alt="FeedIcon" className="nav-imgfeed" /> Feeding System
                     </a>
+
 
 
           <NavLink
