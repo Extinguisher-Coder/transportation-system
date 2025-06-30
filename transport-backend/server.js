@@ -15,6 +15,8 @@ const transportReconciliationRoutes = require('./routes/transportReconciliationR
 const transportBalanceHistoryRoutes = require('./routes/transportBalanceHistoryRoutes');
 const cashierTransportSummaryRoutes = require('./routes/cashierTransportSummaryRoutes');
 const transportSummaryRoutes = require('./routes/transportSummaryRoutes');
+const loginRecordRoutes = require("./routes/loginRecordRoutes");
+
 
 
 
@@ -53,6 +55,7 @@ app.use('/api/transport-reconciliation', transportReconciliationRoutes);
 app.use('/api/transport-balance-history', transportBalanceHistoryRoutes);
 app.use('/api/cashier-transport-summary', cashierTransportSummaryRoutes);
 app.use('/api/transport', transportSummaryRoutes);
+app.use("/api/login-records", loginRecordRoutes);
 
 
 

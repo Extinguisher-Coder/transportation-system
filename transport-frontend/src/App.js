@@ -32,9 +32,9 @@ import ProtectedRoute from './Auth/ProtectedRoute';
 import TransportCashBalancingPage from './Components/AdminComponents/AdminPages/TransportCashBalancingPage';
 import TransportAddCashReceivedForm from './Components/AdminComponents/AdminPages/TransportAddCashReceivedForm';
 import TransportDailyBalancingPage from './Components/AdminComponents/AdminPages/TransportDailyBalancingPage';
-import SystemLogs from './Components/AdminComponents/AdminPages/SystemLogs';
 import CashierTransportWeeklyReportPage from './Components/AdminComponents/AdminPages/CashierTransportWeeklyReportPage';
 import TransportSummaryPage from "./Components/AdminComponents/AdminPages/TransportSummaryPage";
+import LoginHistoryPage from "./Components/AdminComponents/AdminPages/LoginHistoryPage";
 
 
 function App() {
@@ -83,7 +83,7 @@ function App() {
                             <Route path="/admin/summary" element={<TransportSummaryPage/>} />
                             <Route path="/admin/transport-add-received" element={<TransportAddCashReceivedForm/>} />
                             <Route path="/admin/transport-daily-balancing" element={<TransportDailyBalancingPage/>} />
-                            <Route path="/admin/logs" element={<SystemLogs/>} />
+                            <Route path="/admin/logs" element={<LoginHistoryPage/>} />
                             <Route path="/admin/cashier-weekly" element={<CashierTransportWeeklyReportPage/>} />
 
 

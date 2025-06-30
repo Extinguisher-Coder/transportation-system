@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const UserModel = require('../models/userModel');
+const LoginRecord = require('../models/loginRecordModel');
+
 
 // 📌 Get all users
 const getAllUsers = async (req, res) => {
@@ -97,6 +99,7 @@ const getUserCount = async (req, res) => {
 
 
 // 📌 Login user
+// 📌 Login user
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -120,9 +123,18 @@ const loginUser = async (req, res) => {
         email: user.email,
         role: user.role,
       },
-      process.env.JWT_SECRET, 
+      process.env.JWT_SECRET,
       { expiresIn: '2h' }
     );
+
+    // ✅ Log the successful login
+    await LoginRecord.create({
+      userId: user._id,
+      email: user.email,
+      role: user.role,
+      loginTime: new Date(),
+      ipAddress: req.headers["x-forwarded-for"] || req.connection.remoteAddress,
+    });
 
     // Send success response
     res.json({
@@ -141,6 +153,7 @@ const loginUser = async (req, res) => {
     res.status(500).json({ message: 'Login failed' });
   }
 };
+
 
 
 
